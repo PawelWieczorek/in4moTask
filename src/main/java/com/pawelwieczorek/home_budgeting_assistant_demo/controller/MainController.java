@@ -31,12 +31,13 @@ public class MainController {
         return service.getBalance();
     }
 
-    @PostMapping(value = "/recharge", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    void recharge(@RequestBody RechargeModel model) {
+    @PostMapping(path = "/recharge", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    RechargeModel recharge(@RequestBody RechargeModel model) {
         service.recharge(model);
+        return model;
     }
 
-    @PostMapping(value = "/transfer", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PostMapping(path = "/transfer", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     void transfer(TransferModel model) {
 
     }
