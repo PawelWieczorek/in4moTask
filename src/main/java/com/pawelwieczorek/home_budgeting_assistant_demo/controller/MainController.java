@@ -20,12 +20,6 @@ public class MainController {
         this.service = service;
     }
 
-    @GetMapping("/")
-    @ResponseBody
-    String welcomeMessage() {
-        return "Hello in Home Budget Assistant!";
-    }
-
     @GetMapping("/balance")
     List<Register> getBalance() {
         return service.getBalance();
@@ -38,8 +32,8 @@ public class MainController {
     }
 
     @PostMapping(path = "/transfer", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    void transfer(TransferModel model) {
-
+    TransferModel transfer(@RequestBody TransferModel model) {
+        service.transfer(model);
+        return model;
     }
-
 }
